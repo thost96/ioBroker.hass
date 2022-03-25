@@ -17,8 +17,8 @@
         function load(settings, onChange) {
             if (!settings) return;
 
-            if (settings.password === undefined) settings.password = '';
-            settings.passwordRepeat = settings.password;
+            if (settings.token === undefined) settings.token = '';
+            settings.tokenRepeat = settings.token;
 
             $('.value').each(function () {
                 var key = $(this).attr('id');
@@ -42,8 +42,8 @@
         function save(callback) {
             var obj = {};
 
-            if ($('#password').val() !== $('#passwordRepeat').val()) {
-                showMessage(_('Passwords missmatch!'), _('Warning'), 'alert');
+            if ($('#token').val() !== $('#tokenRepeat').val()) {
+                showMessage(_('token missmatch!'), _('Warning'), 'alert');
                 return;
             }
 
@@ -55,7 +55,7 @@
                     obj[$this.attr('id')] = $this.val();
                 }
             });
-            delete obj.passwordRepeat;
+            delete obj.tokenRepeat;
 
             callback(obj);
         }
@@ -85,12 +85,12 @@
         <div class="row">
             <div class="col s12 m8 l8">
                 <div class="col s6 m4 input-field">
-                    <input type="password" class="value" id="password" />
-                    <label for="password" class="translate">Password:</label>
+                    <input type="password" class="value" id="token" />
+                    <label for="password" class="translate">Long term token:</label>
                 </div>
                 <div class="col s6 m4 input-field">
-                    <input type="password" class="value" id="passwordRepeat" />
-                    <label for="passwordRepeat" class="translate">Password repeat:</label>
+                    <input type="password" class="value" id="tokenRepeat" />
+                    <label for="passwordRepeat" class="translate">long term token repeat:</label>
                 </div>
             </div>
         </div>
